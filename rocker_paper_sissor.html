@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="utf-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <title>RockPaperScissor</title>
+        <meta name="description" content="">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <link rel="stylesheet" href="">
+    </head>
+    <body>
+        <p>Rock paper scissor</p>
+        <button onclick="
+        let randomNumber_rock = Math.random();
+        let computerChoice = '';
+        computerChoice = computerChoiceFunc(computerChoice, randomNumber_rock);
+        alert(game_logic('rock', computerChoice))
+        ">Rock</button>
+        <button onclick="
+        let randomNumber_paper = Math.random();
+        computerChoice = '';
+        computerChoice = computerChoiceFunc(computerChoice, randomNumber_paper);
+        alert(game_logic('paper', computerChoice))
+        ">Paper</button>
+        <button onclick="
+        let randomNumber_scissor = Math.random();
+        computerChoice = '';
+        computerChoice = computerChoiceFunc(computerChoice, randomNumber_scissor);
+        alert(game_logic('scissor', computerChoice))
+        ">Sissor</button>
+        
+        
+        <script>
+        
+        function computerChoiceFunc(computerChoice, randomNumber){
+            if(randomNumber > 0 && randomNumber <= 1/3){
+                computerChoice = 'rock';
+            }
+            else if(randomNumber >= 1/3 && randomNumber <=2/3) {
+                computerChoice = 'paper';
+            }
+            else{
+                computerChoice = 'scissor'
+            }
+            return computerChoice
+        }
+
+        function game_logic(playerChoice, computerChoice){
+            if(playerChoice === computerChoice){
+                return(`Its a tie the computer also chose ${playerChoice}`)
+            }
+            else if(
+                (playerChoice === 'rock' && computerChoice ==='scissor')||
+                (playerChoice === 'paper' && computerChoice === 'rock')||
+                (playerChoice === 'scissor' && computerChoice ==='paper')
+            ){
+                return(`you win the computer chose ${computerChoice}`)
+            }
+            else{
+                return(`you loose, cuz the computer chose ${computerChoice}`)
+            }
+        }
+        
+        </script>
+    </body>
+</html>
+
