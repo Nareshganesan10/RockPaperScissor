@@ -35,13 +35,8 @@
         alert(`Scores resetted\nwins: ${scoreCard.wins}, losses: ${scoreCard.losses}, ties: ${scoreCard.ties}`)
         ">reset scores</button>
         <script>
-
-        const scoreCard = {
-            wins: 0,
-            losses: 0,
-            ties: 0
-        }
-        
+        const scoreCard = JSON.stringify(localStorage.getItem('scoreCard'));
+        console.log(scoreCard)
         function computerChoiceFunc(computerChoice, randomNumber){
             if(randomNumber > 0 && randomNumber <= 1/3){
                 computerChoice = 'rock';
@@ -80,6 +75,7 @@
             else{
                 scoreCard.ties += 1
             }
+            localStorage.setItem('scoreCard', JSON.stringify(scoreCard));
             alert(`Result: ${result}\n
             wins: ${scoreCard.wins}, losses: ${scoreCard.losses}, ties: ${scoreCard.ties}`)
         }
